@@ -11,7 +11,8 @@ node {
     stage('Deploying...') {
         echo 'Deploying...'
         writeFile file: 'build.txt', text: env.BUILD_ID
-        sshagent(['c1f87d6d-d464-4053-a66d-e243ed20bc15']) {
+        withCredentials([usernameColonPassword(credentialsId: 'c1f87d6d-d464-4053-a66d-e243ed20bc15', variable: 'token')]){
+            echo $token
             sh 'git add .'
             sh "git commit -m ${env.BUILD_ID}"
             sh 'git push origin main'
