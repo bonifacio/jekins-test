@@ -11,12 +11,10 @@ node {
     stage('Deploying...') {
         echo 'Deploying...'
         writeFile file: 'build.txt', text: env.BUILD_ID
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'c1f87d6d-d464-4053-a66d-e243ed20bc15', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-            echo $PASSWORD
-            sh 'git add .'
-            sh "git commit -m ${env.BUILD_ID}"
-            sh 'git push origin main'
-        }
+        sh "git remote set-url origin https://boniestudo:${TOKEN}@github.com/bonifacio/jekins-test"
+        sh 'git add .'
+        sh "git commit -m ${env.BUILD_ID}"
+        sh 'git push origin main'
     }
     stage('Finish!!!') {
         echo 'Finish!!!'
