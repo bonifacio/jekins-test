@@ -25,7 +25,7 @@ node {
         sh 'git fetch'
         sh 'git add .'
         sh "git commit -m ${env.BUILD_ID}"
-        sh 'git push origin main'
+        sh 'git push'
     }
     stage('Finish!!!') {
         echo 'Finish!!!'
