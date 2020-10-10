@@ -1,6 +1,5 @@
 node {
     stage('Starting...') {
-        scm checkout
         echo 'Starting...'
     }
     stage('Building...') {
