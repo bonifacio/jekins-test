@@ -10,6 +10,7 @@ node {
     }
     stage('Deploying...') {
         echo 'Deploying...'
+        sh 'pwd'
         sh 'ls -la'
         writeFile file: 'build.txt', text: env.BUILD_ID
         def TOKEN = input(
