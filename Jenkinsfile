@@ -11,6 +11,11 @@ node {
     stage('Deploying...') {
         echo 'Deploying...'
         writeFile file: 'build.txt', text: env.BUILD_ID
+        def TOKEN = input(
+            id: 'token', message: 'Digite seu token', parameters: [
+                [$class: 'TextParameterDefinition', defaultValue: '', description: 'Token', name: 'token']
+                ]
+            )
         sh "git remote set-url origin https://boniestudo:${TOKEN}@github.com/bonifacio/jekins-test"
         sh 'git add .'
         sh "git commit -m ${env.BUILD_ID}"
