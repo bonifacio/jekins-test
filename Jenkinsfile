@@ -19,7 +19,7 @@ node {
                 [$class: 'TextParameterDefinition', defaultValue: '', description: 'Token', name: 'token']
                 ]
             )
-        sh 'git config --global user.email "boniestudo@gmail.com"'
+        sh 'git config --global user.email "boni.estudo@gmail.com"'
         sh 'git config --global user.name "Boni Estudo"'
         sh "git remote set-url origin https://boniestudo:${TOKEN}@github.com/bonifacio/jekins-test"
         sh 'git fetch'
